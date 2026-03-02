@@ -1,0 +1,191 @@
+/* ===== 余白の一鉢｜Base ===== */
+:root{
+  --bg: #F3F0EB;          /* グレージュ */
+  --card: rgba(255,255,255,.75);
+  --text: #2B2B2B;
+  --muted: #5A5A5A;
+  --line: rgba(0,0,0,.08);
+  --green: #2F3A2F;
+  --shadow: 0 16px 40px rgba(0,0,0,.10);
+  --radius: 18px;
+  --max: 860px;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(900px 520px at 15% 15%, rgba(47,58,47,.10), transparent 55%),
+    radial-gradient(800px 520px at 85% 25%, rgba(47,58,47,.07), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--bg));
+}
+
+a{ color:inherit; }
+.container{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.text-muted{ color: var(--muted); }
+
+/* ===== Header ===== */
+.site-header{
+  position: sticky;
+  top:0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  background: rgba(243,240,235,.82);
+  border-bottom: 1px solid var(--line);
+}
+.header-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding: 14px 0;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+}
+.brand-mark{
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, rgba(47,58,47,.95), rgba(47,58,47,.2));
+  box-shadow: 0 0 0 7px rgba(47,58,47,.10);
+}
+.brand-text{ display:flex; flex-direction:column; line-height:1.1; }
+.brand-sub{ font-size: 12px; color: var(--muted); }
+.brand-main{ font-size: 13px; font-weight: 800; letter-spacing:.02em; }
+
+.header-pill{
+  font-size: 12px;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: rgba(255,255,255,.55);
+}
+
+/* ===== Hero ===== */
+main{ padding: 22px 0 56px; }
+.hero{
+  border: 1px solid var(--line);
+  background: var(--card);
+  border-radius: 26px;
+  padding: 22px 18px;
+  box-shadow: var(--shadow);
+}
+.hero-title{
+  margin: 4px 0 8px;
+  font-size: clamp(22px, 4.8vw, 34px);
+  line-height: 1.15;
+  letter-spacing: .02em;
+}
+.hero-sub{
+  margin:0 0 14px;
+  color: var(--muted);
+  line-height: 1.75;
+  font-size: 14px;
+}
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top: 10px;
+}
+.hero-note{
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+
+/* ===== Cards / Grids ===== */
+.grid-2{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 16px;
+}
+@media (min-width: 820px){
+  .grid-2{ grid-template-columns: 1fr 1fr; }
+}
+.card{
+  border: 1px solid var(--line);
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.06);
+}
+.card-title{
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+.list{
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.85;
+  font-size: 14px;
+}
+
+/* ===== Buttons ===== */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  border-radius: 14px;
+  padding: 12px 14px;
+  min-height: 46px;
+  font-weight: 800;
+  letter-spacing: .02em;
+  border: 1px solid transparent;
+  transition: transform .08s ease;
+}
+.btn:hover{ transform: translateY(-1px); }
+
+.btn-primary{
+  background: var(--green);
+  color: #fff;
+}
+.btn-ghost{
+  background: rgba(255,255,255,.65);
+  border-color: var(--line);
+  color: var(--text);
+}
+
+/* ===== Footer ===== */
+.footer-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top: 18px;
+  justify-content: center;
+}
+.site-footer{
+  border-top: 1px solid var(--line);
+  background: rgba(243,240,235,.85);
+}
+.footer-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 16px 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ===== Diagnosis / Result pages will use shared styles ===== */

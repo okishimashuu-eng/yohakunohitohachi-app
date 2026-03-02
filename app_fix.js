@@ -9,9 +9,12 @@ document.documentElement.setAttribute("data-app-version","fix-IMG-002");
    - 主×副で「主2 + 副1」重複回避
    - seed は回答から生成（同じ結果になりにくい）
    - 画像：assets/plants/plants1.jpeg〜plants20.jpeg
+   ※ GitHub Pages 対策：先頭「/」は使わず “相対URL” を組み立てる
    =============================== */
 
-const IMG_BASE = "assets/plants/";
+/* ---- URLユーティリティ（GitHub Pagesのサブパスでも壊れない） ---- */
+const SITE_DIR = new URL(".", window.location.href); // index.html のあるディレクトリ
+const assetUrl = (relPath) => new URL(relPath, SITE_DIR).toString();
 
 /* ---- タイプ（確定） ---- */
 const TYPES = [
@@ -50,123 +53,103 @@ const SCALE = [
 const PLANTS = {
   sanse: plant("サンスベリア（ローレンティ）","永久 / 不滅","明るい室内〜半日陰（直射NG）",
     { summer:"2〜3週間に1回（完全に乾いてから）", winter:"4〜6週間に1回（完全に乾いてから）" },
-    "水のやりすぎ / 低温",
-    "放置でも整う王道。余力が少ない時に失敗しにくい。",
-    "plants1.jpeg"
+    "水のやりすぎ / 低温","放置でも整う王道。余力が少ない時に失敗しにくい。",
+    assetUrl("assets/plants/plants1.jpeg")
   ),
   zz: plant("ザミオクルカス（ZZプランツ）","輝く未来","明るい室内〜半日陰",
     { summer:"2〜3週間に1回（完全に乾いてから）", winter:"4〜6週間に1回（完全に乾いてから）" },
-    "水やり過多（根腐れ）",
-    "世話を減らしても育つ。自分を守る余白を作れる。",
-    "plants2.jpeg"
+    "水やり過多（根腐れ）","世話を減らしても育つ。自分を守る余白を作れる。",
+    assetUrl("assets/plants/plants2.jpeg")
   ),
   pothos: plant("ポトス","永遠の富 / 長い幸せ","明るい室内（レース越し推奨）",
     { summer:"7〜10日に1回（表面が乾いたら）", winter:"10〜14日に1回（乾き気味）" },
-    "直射日光 / 受け皿の水溜め",
-    "悩んでも育つ安心枠。『続けられた』が回復の芯になる。",
-    "plants3.jpeg"
+    "直射日光 / 受け皿の水溜め","悩んでも育つ安心枠。『続けられた』が回復の芯になる。",
+    assetUrl("assets/plants/plants3.jpeg")
   ),
   pachira: plant("パキラ","快活 / 勝利","明るい室内（直射NG）",
     { summer:"7〜10日に1回（乾いたら）", winter:"10〜14日に1回（控えめ）" },
-    "水やり過多 / 寒さ",
-    "ルールがある方が安心するタイプに刺さる。",
-    "plants4.jpeg"
+    "水やり過多 / 寒さ","ルールがある方が安心するタイプに刺さる。",
+    assetUrl("assets/plants/plants4.jpeg")
   ),
   dracaena: plant("ドラセナ（幸福の木系）","幸福","明るい室内〜半日陰",
     { summer:"10日に1回（乾いてから）", winter:"2〜3週間に1回（控えめ）" },
-    "寒さ / 過湿",
-    "部屋の柱になる安定感。刺激で散った意識を戻す。",
-    "plants5.jpeg"
+    "寒さ / 過湿","部屋の柱になる安定感。刺激で散った意識を戻す。",
+    assetUrl("assets/plants/plants5.jpeg")
   ),
   gajumaru: plant("ガジュマル","健康","明るい室内（窓辺/直射は避ける）",
     { summer:"7〜10日に1回（乾いたら）", winter:"2〜3週間に1回（控えめ）" },
-    "冷え / 乾燥しすぎ",
-    "“今ここ”に戻すアンカー。自分の場所を作れる。",
-    "plants6.jpeg"
+    "冷え / 乾燥しすぎ","“今ここ”に戻すアンカー。自分の場所を作れる。",
+    assetUrl("assets/plants/plants6.jpeg")
   ),
   monstera: plant("モンステラ","うれしい便り","明るい室内（直射NG）",
     { summer:"7〜10日に1回（表面が乾いたら）", winter:"10〜14日に1回（控えめ）" },
-    "冷え / 直射",
-    "大きい葉の余白で落ち着く。視界の休憩所。",
-    "plants7.jpeg"
+    "冷え / 直射","大きい葉の余白で落ち着く。視界の休憩所。",
+    assetUrl("assets/plants/plants7.jpeg")
   ),
   schefflera: plant("シェフレラ（カポック）","実直","明るい室内",
     { summer:"7〜10日に1回（乾いたら）", winter:"10〜14日に1回（控えめ）" },
-    "寒さ / 過湿",
-    "丈夫で折れにくい。『ほどほどでいい』を思い出せる。",
-    "plants8.jpeg"
+    "寒さ / 過湿","丈夫で折れにくい。『ほどほどでいい』を思い出せる。",
+    assetUrl("assets/plants/plants8.jpeg")
   ),
   umbellata: plant("フィカス・ウンベラータ","すこやか","明るい室内（直射NG）",
     { summer:"7〜10日に1回（乾いたら）", winter:"10〜14日に1回（控えめ）" },
-    "冷え / 急な移動",
-    "呼吸が戻る。思考の熱を下げる。",
-    "plants9.jpeg"
+    "冷え / 急な移動","呼吸が戻る。思考の熱を下げる。",
+    assetUrl("assets/plants/plants9.jpeg")
   ),
   everfresh: plant("エバーフレッシュ","歓喜","明るい室内（直射NG）",
     { summer:"5〜7日に1回（やや湿り気）", winter:"10〜14日に1回（控えめ）" },
-    "乾燥しすぎ / 冷え",
-    "葉が閉じる動きで1日の区切りが作れる。",
-    "plants10.jpeg"
+    "乾燥しすぎ / 冷え","葉が閉じる動きで1日の区切りが作れる。",
+    assetUrl("assets/plants/plants10.jpeg")
   ),
   ivy: plant("アイビー（ヘデラ）","友情","明るい室内〜半日陰",
     { summer:"5〜10日に1回（乾いたら）", winter:"10〜14日に1回（控えめ）" },
-    "水切れ放置 / 直射",
-    "ちょい世話で満足感。手持ち無沙汰を優しく埋める。",
-    "plants11.jpeg"
+    "水切れ放置 / 直射","ちょい世話で満足感。手持ち無沙汰を優しく埋める。",
+    assetUrl("assets/plants/plants11.jpeg")
   ),
   spider: plant("オリヅルラン","祝賀","明るい室内（直射NG）",
     { summer:"7〜10日に1回（乾いたら）", winter:"10〜14日に1回（控えめ）" },
-    "冷え / 過湿",
-    "丈夫で増える＝小さな成功体験が積み上がる。",
-    "plants12.jpeg"
+    "冷え / 過湿","丈夫で増える＝小さな成功体験が積み上がる。",
+    assetUrl("assets/plants/plants12.jpeg")
   ),
   spath: plant("スパティフィラム","清らかな心","明るい日陰（強光NG）",
     { summer:"5〜7日に1回（乾く前に軽く）", winter:"10〜14日に1回（控えめ）" },
-    "乾燥しすぎ / 直射",
-    "しおれ→水で戻る。反応が分かりやすく安心。",
-    "plants13.jpeg"
+    "乾燥しすぎ / 直射","しおれ→水で戻る。反応が分かりやすく安心。",
+    assetUrl("assets/plants/plants13.jpeg")
   ),
   syngonium: plant("シンゴニウム","喜び","明るい室内（直射NG）",
     { summer:"7〜10日に1回（乾いたら）", winter:"10〜14日に1回（控えめ）" },
-    "寒さ / 過湿",
-    "観察の対象になって、考えすぎが軽くなる。",
-    "plants14.jpeg"
+    "寒さ / 過湿","観察の対象になって、考えすぎが軽くなる。",
+    assetUrl("assets/plants/plants14.jpeg")
   ),
   echeveria: plant("多肉植物（エケベリア系）","優美","明るい場所（強光は慣らす）",
     { summer:"2〜3週間に1回（乾いてから）", winter:"4〜6週間に1回（控えめ）" },
-    "水やり過多 / 日照不足",
-    "世話が少なく静けさ向き。神経の休憩に合う。",
-    "plants15.jpeg"
+    "水やり過多 / 日照不足","世話が少なく静けさ向き。神経の休憩に合う。",
+    assetUrl("assets/plants/plants15.jpeg")
   ),
   cactus: plant("サボテン（小型）","枯れない愛","明るい場所（強光は慣らす）",
     { summer:"3〜4週間に1回（乾いてから）", winter:"6〜8週間に1回（ほぼ不要）" },
-    "水やり過多 / 急な強光",
-    "余白の象徴。やらなくても崩れない安心。",
-    "plants16.jpeg"
+    "水やり過多 / 急な強光","余白の象徴。やらなくても崩れない安心。",
+    assetUrl("assets/plants/plants16.jpeg")
   ),
   peperomia: plant("ペペロミア","可憐","明るい室内（直射NG）",
     { summer:"7〜10日に1回（乾いたら）", winter:"10〜14日に1回（控えめ）" },
-    "冷え / 過湿",
-    "小さく優しい存在。自分のための小習慣が作れる。",
-    "plants17.jpeg"
+    "冷え / 過湿","小さく優しい存在。自分のための小習慣が作れる。",
+    assetUrl("assets/plants/plants17.jpeg")
   ),
   pilea: plant("ピレア（パンケーキプランツ）","救済","明るい室内（直射NG）",
     { summer:"7〜10日に1回（乾いたら）", winter:"10〜14日に1回（控えめ）" },
-    "寒さ / 過湿",
-    "丸い葉がやさしい。罪悪感を下げて“自分OK”に寄せる。",
-    "plants18.jpeg"
+    "寒さ / 過湿","丸い葉がやさしい。罪悪感を下げて“自分OK”に寄せる。",
+    assetUrl("assets/plants/plants18.jpeg")
   ),
   hoya: plant("ホヤ（カルノーサ等）","人生の幸福","明るい室内（直射NG）",
     { summer:"2〜3週間に1回（乾いてから）", winter:"4〜6週間に1回（控えめ）" },
-    "過湿 / 寒さ",
-    "乾かし気味でOK。頑張りすぎず続く。",
-    "plants19.jpeg"
+    "過湿 / 寒さ","乾かし気味でOK。頑張りすぎず続く。",
+    assetUrl("assets/plants/plants19.jpeg")
   ),
   calathea: plant("カラテア","飛躍","明るい日陰（直射NG）",
     { summer:"5〜7日に1回（乾かしすぎない）", winter:"10日に1回（控えめ）" },
-    "乾燥しすぎ / 冷風",
-    "丁寧に扱う時間が自分への許可になる（少し難しめ）。",
-    "plants20.jpeg"
+    "乾燥しすぎ / 冷風","丁寧に扱う時間が自分への許可になる（少し難しめ）。",
+    assetUrl("assets/plants/plants20.jpeg")
   ),
 };
 
@@ -369,11 +352,10 @@ function renderResult(res){
   plantGridEl.innerHTML = "";
 
   res.plants.forEach((p, idx)=>{
-    const imgUrl = p.img ? (IMG_BASE + p.img) : "";
-
-    const imgHtml = imgUrl
+    const imgHtml = p.img
       ? `<div class="plant-img-wrap">
-           <img class="plant-img" src="${esc(imgUrl)}" alt="${esc(p.name)}" loading="lazy">
+           <img class="plant-img" src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy"
+             onerror="this.style.display='none'">
          </div>`
       : "";
 

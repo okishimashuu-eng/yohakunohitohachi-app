@@ -311,3 +311,25 @@ a{ color:inherit; text-decoration:none; }
   margin: 0 auto;
   object-fit: contain;
 }
+/* ==== plant image fix ==== */
+.plant-img-wrap{
+  width: 100%;
+  max-width: 520px;
+  margin: 10px 0 12px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,.08);
+  background: rgba(255,255,255,.6);
+}
+
+.plant-img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* もし赤枠が出てるなら強制で消す（デバッグ枠対策） */
+.plant-img-wrap,
+.plant-img{
+  outline: none !important;
+}

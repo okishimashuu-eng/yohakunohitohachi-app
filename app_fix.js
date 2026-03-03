@@ -406,6 +406,12 @@ function esc(s){
     .replaceAll("'","&#39;");
 }
 
+const IMG_BASE = "assets/plants/";
+
+/* img を追加（画像パスを assets/plants/ に固定） */
 function plant(name, hanakotoba, place, water, ng, why, img){
-  return { name, hanakotoba, place, water, ng, why, img };
+  return {
+    name, hanakotoba, place, water, ng, why,
+    img: img ? (IMG_BASE + img) : ""
+  };
 }

@@ -1,3 +1,19 @@
+// === DEBUG: これが画面に出れば、JSは確実に動いてる ===
+window.addEventListener("load", () => {
+  const box = document.createElement("div");
+  box.style.cssText = "position:fixed;left:10px;bottom:10px;z-index:99999;background:#fff;border:2px solid #000;padding:8px;font-weight:900;";
+  box.textContent = "JS OK ✅ (DEBUG BOX)";
+  document.body.appendChild(box);
+
+  // === DEBUG: 画像URLが正しいかを強制で1枚だけ表示 ===
+  const img = document.createElement("img");
+  img.src = "./plants1.jpeg"; // ←ここが表示されればパスはOK
+  img.alt = "debug plants1";
+  img.style.cssText = "position:fixed;left:10px;top:10px;z-index:99999;width:120px;height:auto;border:2px solid red;background:#fff;";
+  img.onerror = () => { box.textContent = "JS OK ✅ / IMG NG ❌ (./plants1.jpeg)"; };
+  img.onload  = () => { box.textContent = "JS OK ✅ / IMG OK ✅"; };
+  document.body.appendChild(img);
+});
 console.log("APP_VERSION: fix-IMG-002");
 document.documentElement.setAttribute("data-app-version","fix-IMG-002");
 

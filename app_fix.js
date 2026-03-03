@@ -358,14 +358,18 @@ function renderResult(res){
     if (imgOkEl && src) safeSetText(imgOkEl, "IMG OK ✅");
 
     const imgHtml = src
-      ? `<div class="plant-img-wrap">
-           <img class="plant-img"
-                src="${esc(src)}"
-                alt="${esc(p.name)}"
-                loading="lazy"
-                onerror="this.style.display='none'">
-         </div>`
-      : "";
+  ? `<div class="plant-img-wrap">
+       <img class="plant-img"
+            src="${esc(src)}"
+            alt="${esc(p.name)}"
+            loading="lazy"
+            style="border:2px solid red;background:#fff;"
+            onerror="this.insertAdjacentHTML('afterend','<div style=\\'color:#b00;font-weight:900;margin-top:6px;word-break:break-all;\\'>IMG LOAD NG ❌<br>' + this.src + '</div>');">
+       <div style="font-size:12px;color:#555;margin-top:6px;word-break:break-all;">
+         SRC: ${esc(src)}
+       </div>
+     </div>`
+  : "";
 
     const div = document.createElement("div");
     div.className = "plant";

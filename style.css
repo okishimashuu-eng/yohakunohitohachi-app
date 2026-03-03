@@ -333,3 +333,18 @@ a{ color:inherit; text-decoration:none; }
 .plant-img{
   outline: none !important;
 }
+/* ==== plant image fix ==== */
+.plant-img-wrap{
+  margin: 10px 0 12px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(0,0,0,.04);
+}
+
+.plant-img{
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 420px;   /* 大きすぎ防止 */
+  margin: 0;
+}
